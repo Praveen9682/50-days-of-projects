@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            font-weight: 600;
+            font-size: 35px;
+        }
+
+        body {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        input {
+            border-radius: 5px;
+            border: 2px solid black;
+            padding: 10px;
+            padding-right: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CodeWithMe</h1>
+    <input type="text">
+
+    <script>
+        var text =  document.querySelector("h1");
+        var input = document.querySelector("input");
+
+        input.addEventListener("input", () =>{
+            text.style.color = input.value;
+            text.style.fontSize = input.value;
+        });
+    </script>
+</body>
+
+</html>

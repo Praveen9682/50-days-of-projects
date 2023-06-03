@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom progress bar</title>
+</head>
+<style>
+    body {
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    input {
+        width: 300px;
+        -webkit-appearance: none;
+    }
+
+    input::-webkit-slider-thumb {
+        margin-top: -7px;
+        height: 30px;
+        cursor: pointer;
+        border: 1px solid #fff;
+        width: 15px;
+        -webkit-appearance: none;
+        background-color: crimson;
+    }
+
+    input::-webkit-slider-runnable-track {
+        background-color: crimson;
+        margin-top: 5px;
+        height: 15px;
+        border-radius: 15px;
+    }
+</style>
+
+<body>
+    <input type="range">
+</body>
+
+</html>

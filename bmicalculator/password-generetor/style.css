@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    letter-spacing: 1px;
+}
+
+:root {
+    --width: 300px;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    justify-content: center;
+    overflow: hidden;
+    background-color: azure;
+}
+
+.container {
+    background-color: #1d1541;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    width: 350px;
+    height: 400px;
+    box-shadow: 5px 5px 10px rgba(111, 115, 129, 0.8),
+        -5px -5px 10px rgba(111, 115, 129, 0.8);
+}
+
+.container .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 15px;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.container .main h2 {
+    margin-top: 20px;
+    color: #fff;
+}
+
+.container .main h2>span {
+    color: peachpuff;
+}
+
+.container .main input {
+    width: var(--width);
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.container .main #passLength {
+    width: var(--width);
+    border-radius: 5px;
+    padding: 5px 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+.container .main button {
+    width: var(--width);
+    border-radius: 5px;
+    padding: 5px 0;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+}
+
+p {
+    visibility: visible;
+    color: red;
+    text-align: center;
+    font-size: 15px;
+    position: absolute;
+    top: 65%;
+}

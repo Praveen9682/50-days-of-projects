@@ -1,0 +1,33 @@
+<!-- EJS-lint -->
+
+<%- include("header"); -%>
+
+    <div class="mainSection">
+        <div class="main">
+            <h1>Home</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur ullam vitae laborum cumque suscipit
+                aliquid ipsam voluptatibus. Placeat, ducimus? Aliquid iste debitis officia odio dolor dolorum totam
+                voluptas
+                facere aut, quis nisi corporis maiores ut saepe deserunt consequuntur nulla cum perferendis, quas
+                incidunt
+                sapiente atque? Culpa, cumque! A earum rem vero saepe id. Placeat provident quod, ab ducimus, quaerat
+                veniam
+                libero aut dicta reiciendis fugit qui iste quam optio similique illum atque consequuntur quisquam
+                laudantium
+                laboriosam mollitia. Voluptas fugit sequi quisquam alias hic. Asperiores nesciunt dolores modi sapiente
+                itaque fugit aspernatur minima dolor accusantium corrupti quas tempore mollitia, voluptate illum
+                temporibus
+                perferendis fuga! Atque et quaerat assumenda ducimus! Id expedita ipsum consequuntur quos quod nemo
+                aliquam
+                dignissimos molestias iure. Voluptatem, architecto molestias. Adipisci illo perferendis impedit eum,
+                dolorem
+            </p>
+        </div>
+        <% posts.forEach(post => { %>
+            <h1><%= post.title  %></h1>
+         <p><%= post.content.substring(1,100)+ "..." %>
+        <a href="posts/<%=post.title%>">Read More</a>
+        </p> 
+        <% }) %> 
+    </div>
+    <%- include("footer"); -%>

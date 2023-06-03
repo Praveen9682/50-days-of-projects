@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <h2>JavaScript <br><span>Password Generator</span></h2>
+            <input type="text" id="Password" placeholder="Password" onclick="copy()" disabled>
+        <!-- </div>
+        <div class="selection"> -->
+            <select name="length" id="passLength">
+                <option value="0" selected disabled>Length</option>
+                <option value="4">4</option>
+                <option value="6">6</option>
+                <option value="8">8</option>
+                <option value="10">10</option>
+                <option value="12">12</option>
+            </select>
+            <button onclick="generatePassword()">Generate</button>
+            <button onclick="reset()">Reset</button>
+            <p id="error">
+            </p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

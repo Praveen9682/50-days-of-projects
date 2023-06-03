@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeechSynthesis</title>
+    <style>
+        body {
+            display: flex;
+            margin-top: 25px;
+            flex-direction: column;
+            height: 100vh;
+            align-items: center;
+            /* justify-content: center; */
+        }
+
+        textarea {
+            border: 1px solid #000;
+            border-radius: 6px;
+            padding: 10px;
+            caret-color: rgb(69, 69, 235);
+
+            font-size: 20px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            background-color: rgb(69, 69, 235);
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea cols="30" rows="10" placeholder="Enter text"></textarea>
+    <button>speak now</button>
+
+    <script>
+        var textarea = document.querySelector("textarea");
+        var button = document.querySelector("button");
+        button.addEventListener("click", () => {
+            let utterance = new SpeechSynthesis
+            Utterance(textarea.value);
+            speechSynthesis.speak(utterance);
+        });
+    </script>
+</body>
+
+</html>

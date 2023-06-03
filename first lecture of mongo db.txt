@@ -1,0 +1,344 @@
+ASUS@LAPTOP-TJV9QS85 MINGW64 ~
+$ mongosh
+Current Mongosh Log ID: 645211ae88f8c83bdf3c1d6c
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2
+Using MongoDB:          6.0.5
+Using Mongosh:          1.8.2
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-05-03T13:02:41.182+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+------
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+------
+
+test> help
+
+  Shell Help:
+
+    use                                        Set current database
+    show                                       'show databases'/'show dbs': Print a list of all available databases.
+                                               'show collections'/'show tables': Print a list of all collections for current database.
+                                               'show profile': Prints system.profile information.
+                                               'show users': Print a list of all users for current database.
+                                               'show roles': Print a list of all roles for current database.
+                                               'show log <type>': log for current connection, if type is not set uses 'global'
+                                               'show logs': Print all logs.
+
+    exit                                       Quit the MongoDB shell with exit/exit()/.exit
+    quit                                       Quit the MongoDB shell with quit/quit()
+    Mongo                                      Create a new connection and return the Mongo object. Usage: new Mongo(URI, options [optional])
+    connect                                    Create a new connection and return the Database object. Usage: connect(URI, username [optional], password [optional])
+    it                                         result of the last line evaluated; use to further iterate
+    version                                    Shell version
+    load                                       Loads and runs a JavaScript file into the current shell environment
+    enableTelemetry                            Enables collection of anonymous usage data to improve the mongosh CLI
+    disableTelemetry                           Disables collection of anonymous usage data to improve the mongosh CLI
+    passwordPrompt                             Prompts the user for a password
+    sleep                                      Sleep for the specified number of milliseconds
+    print                                      Prints the contents of an object to the output
+    printjson                                  Alias for print()
+    convertShardKeyToHashed                    Returns the hashed value for the input using the same hashing function as a hashed index.
+    cls                                        Clears the screen like console.clear()
+    isInteractive                              Returns whether the shell will enter or has entered interactive mode
+
+  For more information on usage: https://docs.mongodb.com/manual/reference/method
+test> show dbs
+admin   40.00 KiB
+config  60.00 KiB
+local   40.00 KiB
+test> use shopDB
+switched to db shopDB
+shopDB> db
+shopDB
+shopDB> db.shopDB.insertOne()
+MongoshInvalidInputError: [COMMON-10001] Missing required argument at position 0 (Collection.insertOne)
+shopDB> db.products.insertOne({_id:1, name:"Pen", price: 1.20} )
+{ acknowledged: true, insertedId: 1 }
+shopDB> show colletions
+MongoshInvalidInputError: [COMMON-10001] 'colletions' is not a valid argument for "show".
+shopDB> show
+MongoshInvalidInputError: [COMMON-10001] 'undefined' is not a valid argument for "show".
+shopDB> show shopDB
+MongoshInvalidInputError: [COMMON-10001] 'shopDB' is not a valid argument for "show".
+shopDB> show collections
+products
+shopDB> db.products.insertOne({_id:2, name:"Pencil",price:0.80})
+{ acknowledged: true, insertedId: 2 }
+shopDB> show collections
+products
+shopDB> db.products.find()
+[
+  { _id: 1, name: 'Pen', price: 1.2 },
+  { _id: 2, name: 'Pencil', price: 0.8 }
+]
+shopDB> db.products.find({name:"Pencil"})
+[ { _id: 2, name: 'Pencil', price: 0.8 } ]
+shopDB> db.products.find({price:{$gt:1}})
+[ { _id: 1, name: 'Pen', price: 1.2 } ]
+shopDB> db.products.find({_id:1},{name:1})
+[ { _id: 1, name: 'Pen' } ]
+shopDB> db.products.find({_id:1},{name:1, _id:0})
+[ { name: 'Pen' } ]
+shopDB> db.products.updateOne({_id:1}, {$set:{stock:32}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+shopDB> db.products.find()
+[
+  { _id: 1, name: 'Pen', price: 1.2, stock: 32 },
+  { _id: 2, name: 'Pencil', price: 0.8 }
+]
+shopDB> db.products.updateOne({_id:2},{$set:{stock:12}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+shopDB> db.products.find()
+[
+  { _id: 1, name: 'Pen', price: 1.2, stock: 32 },
+  { _id: 2, name: 'Pencil', price: 0.8, stock: 12 }
+]
+shopDB> db.products.deleteOne({status:{_id:2}})
+{ acknowledged: true, deletedCount: 0 }
+shopDB> db.products.find
+[Function: find] AsyncFunction {
+  returnsPromise: true,
+  apiVersions: [ 1, Infinity ],
+  returnType: 'Cursor',
+  serverVersions: [ '0.0.0', '999.999.999' ],
+  topologies: [ 'ReplSet', 'Sharded', 'LoadBalanced', 'Standalone' ],
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+shopDB> db.products.find()
+[
+  { _id: 1, name: 'Pen', price: 1.2, stock: 32 },
+  { _id: 2, name: 'Pencil', price: 0.8, stock: 12 }
+]
+shopDB> db.products.deleteOne({_id:2})
+{ acknowledged: true, deletedCount: 1 }
+shopDB> db.products.find()
+[ { _id: 1, name: 'Pen', price: 1.2, stock: 32 } ]
+shopDB> db.products.insert(
+... {
+... _id:3,
+... name:"rubber",
+... price:1.3,
+... stock:43,
+... review:[
+... {
+... authorName:"praveen",
+... rating:5,
+... review:"best ever"
+... }
+... {
+Uncaught:
+SyntaxError: Unexpected token, expected "," (13:0)
+
+  11 | review:"best ever"
+  12 | }
+> 13 | {
+     | ^
+  14 |
+
+shopDB> authorName:"praveen",
+... rating:5,
+Uncaught:
+SyntaxError: Missing semicolon. (2:6)
+
+  1 | authorName:"praveen",
+> 2 | rating:5,
+    |       ^
+  3 |
+
+shopDB> review:"best ever"
+best ever
+shopDB> }
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | }
+    | ^
+  2 |
+
+shopDB> ]
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | ]
+    | ^
+  2 |
+
+shopDB> }
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | }
+    | ^
+  2 |
+
+shopDB> )db.products.insert(
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | )db.products.insert(
+    | ^
+  2 |
+
+shopDB> {
+... _id:3,
+... name:"rubber",
+... price:1.3,
+... stock:43,
+... review:[
+... {
+... authorName:"praveen",
+... rating:5,
+... review:"best ever"
+... },
+... {
+... authorName:"praveen",
+... rating:5,
+... review:"best ever"
+... }
+... ]
+... }
+... )
+Uncaught:
+SyntaxError: Missing semicolon. (3:4)
+
+  1 | {
+  2 | _id:3,
+> 3 | name:"rubber",
+    |     ^
+  4 | price:1.3,
+  5 | stock:43,
+  6 | review:[
+
+shopDB> db.products.insert(
+... {
+... _id:3,
+... name : "rubber",
+... price:1.3,
+... stock:43,
+... review:[
+... {
+... authorName:"praveen",
+... rating:5,
+... review:"best ever"
+... },
+... {
+... authorName:"praveen",
+... rating:5,
+... review:"best ever"
+... }
+... ]
+... }
+... )
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{ acknowledged: true, insertedIds: { '0': 3 } }
+shopDB> db.products.insertOne(
+... {
+... _id:3,
+... name : "rubber",
+... price:1.3,
+... stock:43,
+... review:[
+... {
+... authorName:"praveen",
+... rating:5,
+... review:"best ever"
+... },
+... {
+... authorName:"praveen",
+... rating:5,
+... review:"best ever"
+... }
+... ]
+... }
+... )
+MongoServerError: E11000 duplicate key error collection: shopDB.products index: _id_ dup key: { _id: 3 }
+shopDB> db.products.find()
+[
+  { _id: 1, name: 'Pen', price: 1.2, stock: 32 },
+  {
+    _id: 3,
+    name: 'rubber',
+    price: 1.3,
+    stock: 43,
+    review: [
+      { authorName: 'praveen', rating: 5, review: 'best ever' },
+      { authorName: 'praveen', rating: 5, review: 'best ever' }
+    ]
+  }
+]
+shopDB> db.products.insertOne(
+... {
+... _id:2,
+... name : "pencil",
+... price:0.80,
+... stock:12,
+... review:[
+... {
+... authorName:"praveen",
+... rating:5,
+... review:"best ever"
+... },
+... {
+... authorName:"vijay",
+... rating:4,
+... review:"best ever"
+... }
+... ]
+... }
+... )
+{ acknowledged: true, insertedId: 2 }
+shopDB> db.products.find()
+[
+  { _id: 1, name: 'Pen', price: 1.2, stock: 32 },
+  {
+    _id: 3,
+    name: 'rubber',
+    price: 1.3,
+    stock: 43,
+    review: [
+      { authorName: 'praveen', rating: 5, review: 'best ever' },
+      { authorName: 'praveen', rating: 5, review: 'best ever' }
+    ]
+  },
+  {
+    _id: 2,
+    name: 'pencil',
+    price: 0.8,
+    stock: 12,
+    review: [
+      { authorName: 'praveen', rating: 5, review: 'best ever' },
+      { authorName: 'vijay', rating: 4, review: 'best ever' }
+    ]
+  }
+]
+shopDB>

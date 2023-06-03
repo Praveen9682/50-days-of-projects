@@ -1,0 +1,205 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\ASUS\Desktop> C:\Users\ASUS\Desktop\gittest
+C:\Users\ASUS\Desktop\gittest : The term 'C:\Users\ASUS\Desktop\gittest'
+is not recognized as the name of a cmdlet, function, script file, or
+operable program. Check the spelling of the name, or if a path was
+included, verify that the path is correct and try again.
+At line:1 char:1
++ C:\Users\ASUS\Desktop\gittest
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\ASUS\Desktop\gitte
+   st:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\ASUS\Desktop> cd gittest
+PS C:\Users\ASUS\Desktop\gittest> mkdir story
+
+
+    Directory: C:\Users\ASUS\Desktop\gittest
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         4/15/2023   8:03 PM                story
+
+
+PS C:\Users\ASUS\Desktop\gittest> cd story
+PS C:\Users\ASUS\Desktop\gittest\story> new-item chapter1.txt
+
+
+    Directory: C:\Users\ASUS\Desktop\gittest\story
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         4/15/2023   8:03 PM              0 chapter1.txt
+
+
+PS C:\Users\ASUS\Desktop\gittest\story> open
+open : The term 'open' is not recognized as the name of a cmdlet,
+function, script file, or operable program. Check the spelling of the
+name, or if a path was included, verify that the path is correct and try
+again.
+At line:1 char:1
++ open
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (open:String) [], CommandNot
+   FoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\ASUS\Desktop\gittest\story> notepad.exe chapter.txt
+PS C:\Users\ASUS\Desktop\gittest\story> git init
+Initialized empty Git repository in C:/Users/ASUS/Desktop/gittest/story/.git/
+PS C:\Users\ASUS\Desktop\gittest\story> ls -a
+Get-ChildItem : Parameter cannot be processed because the parameter name
+'a' is ambiguous. Possible matches include: -Attributes -Directory -File
+-Hidden -ReadOnly -System.
+At line:1 char:4
++ ls -a
++    ~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-ChildItem], Parame
+   terBindingException
+    + FullyQualifiedErrorId : AmbiguousParameter,Microsoft.PowerShell.Comm
+   ands.GetChildItemCommand
+
+PS C:\Users\ASUS\Desktop\gittest\story> git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        chapter.txt
+        chapter1.txt
+
+nothing added to commit but untracked files present (use "git add" to track)PS C:\Users\ASUS\Desktop\gittest\story> git add chapter.txt
+PS C:\Users\ASUS\Desktop\gittest\story> git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   chapter.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        chapter1.txt
+
+PS C:\Users\ASUS\Desktop\gittest\story> git commit -m "completed chapter 0"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'ASUS@LAPTOP-TJV9QS85.(none)')
+PS C:\Users\ASUS\Desktop\gittest\story> git log
+fatal: your current branch 'master' does not have any commits yet
+PS C:\Users\ASUS\Desktop\gittest\story> new-item chapter2.txt
+
+
+    Directory: C:\Users\ASUS\Desktop\gittest\story
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         4/15/2023   8:11 PM              0 chapter2.txt
+
+
+PS C:\Users\ASUS\Desktop\gittest\story> notepad.exe chapter1.txt
+PS C:\Users\ASUS\Desktop\gittest\story> notepad.exe chapter2.txt
+PS C:\Users\ASUS\Desktop\gittest\story> git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   chapter.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        chapter1.txt
+        chapter2.txt
+
+PS C:\Users\ASUS\Desktop\gittest\story> git add .
+PS C:\Users\ASUS\Desktop\gittest\story> git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   chapter.txt
+        new file:   chapter1.txt
+        new file:   chapter2.txt
+
+PS C:\Users\ASUS\Desktop\gittest\story> git commit -m "completed chapter1 and chapter2"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'ASUS@LAPTOP-TJV9QS85.(none)')
+PS C:\Users\ASUS\Desktop\gittest\story>  git config --global user.email "vishwakarmapraveen74@gmail.com"
+PS C:\Users\ASUS\Desktop\gittest\story>  git config --global user.name "Praveen Vishwakarma"
+PS C:\Users\ASUS\Desktop\gittest\story> git commit -m "completed chapter1 and chapter2"
+[master (root-commit) 6699d31] completed chapter1 and chapter2
+ 3 files changed, 3 insertions(+)
+ create mode 100644 chapter.txt
+ create mode 100644 chapter1.txt
+ create mode 100644 chapter2.txt
+PS C:\Users\ASUS\Desktop\gittest\story> ls -a
+Get-ChildItem : Parameter cannot be processed because the parameter name
+'a' is ambiguous. Possible matches include: -Attributes -Directory -File
+-Hidden -ReadOnly -System.
+At line:1 char:4
++ ls -a
++    ~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-ChildItem], Parame
+   terBindingException
+    + FullyQualifiedErrorId : AmbiguousParameter,Microsoft.PowerShell.Comm
+   ands.GetChildItemCommand
+
+PS C:\Users\ASUS\Desktop\gittest\story> notepad.exe chapter2.txt
+PS C:\Users\ASUS\Desktop\gittest\story> git checkout chapter2.txt
+Updated 1 path from the index
+PS C:\Users\ASUS\Desktop\gittest\story> notepad.exe chapter2.txt
+PS C:\Users\ASUS\Desktop\gittest\story> git status
+On branch master
+nothing to commit, working tree clean
+PS C:\Users\ASUS\Desktop\gittest\story> notepad.exe chapter2.txt
+PS C:\Users\ASUS\Desktop\gittest\story> git diff chapter2.txt
+diff --git a/chapter2.txt b/chapter2.txt
+index 34ba233..bf8ba72 100644
+--- a/chapter2.txt
++++ b/chapter2.txt
+@@ -1 +1 @@
+-hey there!
+\ No newline at end of file
++eafexwdhbkas kds
+\ No newline at end of file
+PS C:\Users\ASUS\Desktop\gittest\story> git checkout chapter2.txt
+Updated 1 path from the index
+PS C:\Users\ASUS\Desktop\gittest\story> git status
+On branch master
+nothing to commit, working tree clean
+PS C:\Users\ASUS\Desktop\gittest\story>

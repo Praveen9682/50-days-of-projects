@@ -1,0 +1,15 @@
+<%- include('header'); %>
+  <div class="compose">
+    <form action="/compose" method="post">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Title</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Compose</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
+      </div>
+      <button type="button" name="button" class="btn btn-primary">Publish</button>
+    </form>
+  </div>
+  <%- include('footer'); %>
